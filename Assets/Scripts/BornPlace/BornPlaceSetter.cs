@@ -28,11 +28,21 @@ public class BornPlaceSetter : MonoBehaviour
 
     public void ChangeBornPosition(string bornPlaceKey)
     {
-        //PlayerController.Instance.curBornPlaceTrans = SafeHomePlaces;
+        PlayerController.Instance.curBornPlace= GetPlaceTransformByKey(bornPlaceKey).position;
     }
-
     public void PlayerBornAgain()
     {
         PlayerController.Instance.PlayerBorn();
+    }
+    public Transform GetPlaceTransformByKey(string key)
+    {
+        foreach (BornPlaceInfo info in SafeHomePlaces)
+        {
+            if (info.PlaceKey == key)
+            {
+                return info.PlaceTransForm;
+            }
+        }
+        return null;
     }
 }

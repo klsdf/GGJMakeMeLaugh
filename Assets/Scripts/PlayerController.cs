@@ -12,14 +12,11 @@ public class PlayerController : MonoBehaviour
     public float DelayTime = 0.2f; 
     [Header("移动速度")]
     public float Speed = 0.2f;
-    [HideInInspector] 
-    public static PlayerController Instance;
     private Vector3 targetPos;
     private Vector3 direction = new Vector3(0, -1, 0);
     private Rigidbody rb;
-
-    public Transform curBornPlaceTrans;
-
+    public Vector3 curBornPlace;
+    public static PlayerController Instance;
     private void Awake()
     {
         Instance = this;
@@ -28,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        curBornPlaceTrans = transform;
+        curBornPlace = transform.position;
         targetPos = transform.position + direction*gridSize;
     }
     void Update()
@@ -75,6 +72,6 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerBorn()
     {
-        transform.position = curBornPlaceTrans.position;
+        transform.position = curBornPlace;
     }
 }
