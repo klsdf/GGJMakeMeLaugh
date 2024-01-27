@@ -18,15 +18,29 @@ public class NPCController : MonoBehaviour
     private int TargetIndex = 0;
     private Vector3 direction;
     private Vector3 targetPos;
-    public Rigidbody rb; 
+    private Rigidbody2D rb; 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        direction = (TargetPoint[TargetIndex].position - transform.position).normalized;
+        rb = GetComponent<Rigidbody2D>();
+
+
+        if (TargetPoint.Count != 0)
+        {
+            direction = (TargetPoint[TargetIndex].position - transform.position).normalized;
+        }
+        else {
+            Debug.LogWarning("检测到有敌人没有设置巡逻点");
+        }
+            
+ 
     }
 
     private void Update()
     {
+        if (TargetPoint.Count == 0)
+        {
+            return;
+        }
         ChangeTargetPoint();
         MoveCharacter();
     }
