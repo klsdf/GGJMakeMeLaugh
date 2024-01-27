@@ -3,3 +3,6 @@ GGJMakeMeLaugh.sln
 Logs
 Temp
 Library
+.vs
+obj
+Assembly-CSharp.csproj
