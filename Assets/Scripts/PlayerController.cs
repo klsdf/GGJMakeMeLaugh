@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     [Header("格子大小")]
     public float gridSize;
-    [Header("移动时间间隔")]
-    public float delayTime = 0.3f;
-    private bool isMove = true;
+    [Header("延迟时间")] 
+    public float DelayTime = 0.2f; 
+    [Header("移动速度")]
+    public float Speed = 0.2f;
+    
     private Vector3 targetPos;
     private Vector3 direction = new Vector3(0, -1, 0);
 
@@ -45,14 +47,15 @@ public class PlayerController : MonoBehaviour
     }
     private void MoveCharacter()
     {
-        if (Vector3.Distance(transform.position,targetPos) > 0.1f)
-            StartCoroutine(MoveToNextPos(targetPos, delayTime));
+        if (Vector3.Distance(transform.position, targetPos) > 0.01f)
+            StartCoroutine(MoveToNextPos(targetPos, DelayTime));
         else
-            targetPos = transform.position + direction* gridSize;
+            targetPos = transform.position + direction * gridSize;
     }
+    
     IEnumerator MoveToNextPos(Vector3 targetPos,float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        transform.position = targetPos;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Speed * Time.deltaTime);
     }
 }

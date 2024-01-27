@@ -305,7 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 1
-  delayTime: 0.5
+  DelayTime: 0.2
+  Speed: 5
 --- !u!1 &1165579507
 GameObject:
   m_ObjectHideFlags: 0
