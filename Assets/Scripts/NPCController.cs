@@ -14,12 +14,14 @@ public class NPCController : MonoBehaviour
     public float DelayTime = 0.3f;
     [Header("移动速度")] 
     public float Speed = 3f;
+    
     private int TargetIndex = 0;
     private Vector3 direction;
     private Vector3 targetPos;
-
+    public Rigidbody rb; 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         direction = (TargetPoint[TargetIndex].position - transform.position).normalized;
     }
 
@@ -55,6 +57,7 @@ public class NPCController : MonoBehaviour
      IEnumerator MoveToNextPos(Vector3 targetPos,float delayTime)
      {
          yield return new WaitForSeconds(delayTime);
-         transform.position = Vector3.MoveTowards(transform.position, targetPos, Speed * Time.deltaTime);
+         Vector3 targetPosition = Vector3.MoveTowards(rb.position, targetPos, Speed * Time.deltaTime);
+         rb.MovePosition(targetPosition);
      }
 }

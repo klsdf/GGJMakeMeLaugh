@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,12 +12,23 @@ public class PlayerController : MonoBehaviour
     public float DelayTime = 0.2f; 
     [Header("移动速度")]
     public float Speed = 0.2f;
-    
+    [HideInInspector] 
+    public static PlayerController Instance;
     private Vector3 targetPos;
     private Vector3 direction = new Vector3(0, -1, 0);
+    private Rigidbody rb;
+
+    public Transform curBornPlaceTrans;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        curBornPlaceTrans = transform;
         targetPos = transform.position + direction*gridSize;
     }
     void Update()
@@ -56,6 +69,12 @@ public class PlayerController : MonoBehaviour
     IEnumerator MoveToNextPos(Vector3 targetPos,float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, Speed * Time.deltaTime);
+        Vector3 targetPosition = Vector3.MoveTowards(rb.position, targetPos, Speed * Time.deltaTime);
+        rb.MovePosition(targetPosition);
+    }
+
+    public void PlayerBorn()
+    {
+        transform.position = curBornPlaceTrans.position;
     }
 }
