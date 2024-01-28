@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             direction = new Vector3(1, 0, 0);
         }
+        targetPos = transform.position + direction * gridSize;
     }
     private void MoveCharacter()
     {
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         else
             targetPos = transform.position + direction * gridSize;
     }
-    
+
     IEnumerator MoveToNextPos(Vector3 targetPos,float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
@@ -71,10 +72,10 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(targetPosition);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("=======================");
-        direction = new Vector3(-direction.x, -direction.y, -direction.z);
+        print("===============");
+        direction = new Vector3(-direction.x, -direction.y,0);
     }
 
     public void PlayerBorn()
