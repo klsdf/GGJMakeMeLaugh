@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerController : MonoBehaviour
 {
@@ -73,8 +74,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("===============");
-        direction = new Vector3(-direction.x, -direction.y,0);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            direction = new Vector3(-direction.x, -direction.y,0);
+        }
+
     }
 
     public void PlayerBorn()
