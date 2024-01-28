@@ -85,4 +85,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = curBornPlace;
     }
+
+
 }

@@ -27,7 +27,9 @@ public class UIManager : MonoBehaviour
 
     IEnumerator BackToBeginScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
         SceneManager.LoadScene(0);
     }
+
+
 }

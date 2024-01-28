@@ -30,7 +30,12 @@ public class NPCController : MonoBehaviour
         {
             Vector3 worldPos = localPoint.TransformPoint(Vector3.zero); // 将本地坐标 (0, 0, 0) 转换为世界坐标
             GameObject newPoint = new GameObject(localPoint.name); // 创建新的 GameObject
-            newPoint.transform.position = worldPos; // 设置新 GameObject 的位置
+            //newPoint.transform.position = worldPos; // 设置新 GameObject 的位置
+            newPoint.transform.position = new Vector3(
+                Mathf.Round(worldPos.x), // 四舍五入到整数
+                Mathf.Round(worldPos.y), // 四舍五入到整数
+                worldPos.z // 保持原始的世界坐标的 z 值
+            );
             worldPoints.Add(newPoint.transform); // 将新 GameObject 的 Transform 添加到新的列表中
         }
 

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public static int MoneyAmount = 100;
+
+    public static bool iswin = false;
     public static void AddMoney(int money)
     {
         MoneyAmount += money;
@@ -19,6 +21,10 @@ public class ScoreManager : MonoBehaviour
 
     public static bool IsLose()
     {
+        if (iswin == true)
+        {
+            return false;
+        }
         if (MoneyAmount<=0)
         {
             return true;
