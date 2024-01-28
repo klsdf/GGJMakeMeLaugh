@@ -17,7 +17,7 @@ public class startGame : MonoBehaviour
         
     }
 
-    void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
