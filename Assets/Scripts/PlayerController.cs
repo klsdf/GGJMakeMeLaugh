@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerController : MonoBehaviour
 {
@@ -68,6 +69,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         Vector3 targetPosition = Vector3.MoveTowards(rb.position, targetPos, Speed * Time.deltaTime);
         rb.MovePosition(targetPosition);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("=======================");
+        direction = new Vector3(-direction.x, -direction.y, -direction.z);
     }
 
     public void PlayerBorn()
