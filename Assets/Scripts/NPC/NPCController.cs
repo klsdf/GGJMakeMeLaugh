@@ -74,4 +74,13 @@ public class NPCController : MonoBehaviour
          Vector3 targetPosition = Vector3.MoveTowards(rb.position, targetPos, Speed * Time.deltaTime);
          rb.MovePosition(targetPosition);
      }
+
+     private void OnCollisionEnter2D(Collision2D other)
+     {
+         if (other.gameObject.CompareTag("Player"))
+         {
+             BornPlaceSetter.Instance.PlayerBornAgain();
+             ScoreManager.MinusMoney(10);
+         }
+     }
 }
