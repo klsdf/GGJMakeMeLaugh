@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int MoneyAmount = 0;
+    public static int MoneyAmount = 100;
     public static void AddMoney(int money)
     {
         MoneyAmount += money;
@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     public static bool IsLose()
     {
-        if (MoneyAmount<0)
+        if (MoneyAmount<=0)
         {
             return true;
         }

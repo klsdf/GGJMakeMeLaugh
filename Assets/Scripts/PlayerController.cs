@@ -74,8 +74,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("===============");
-        direction = new Vector3(-direction.x, -direction.y,0);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            direction = new Vector3(-direction.x, -direction.y,0);
+        }
+
     }
 
     public void PlayerBorn()
