@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int MoneyAmount = 100;
+    public static int MoneyAmount = 5;
     public static void AddMoney(int money)
     {
         MoneyAmount += money;
