@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class TeacherController : MonoBehaviour
 {
-    public static bool isWin;
-    private void OnCollisionEnter(Collision other)
+    public static bool isWin=false;
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("isTouched");
             isWin = true;
         }
     }
