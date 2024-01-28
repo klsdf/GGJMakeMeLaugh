@@ -9,7 +9,7 @@ public class NPCController : MonoBehaviour
     [Header("移动目标点")]
     public List<Transform> TargetPoint;
     [Header("格子大小")]
-    public int GridSize;
+    public int GridSize=1;
     [Header("移动延迟时长")]
     public float DelayTime = 0.3f;
     [Header("移动速度")] 

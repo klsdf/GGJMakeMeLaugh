@@ -6,7 +6,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int Value;
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
